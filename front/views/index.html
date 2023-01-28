@@ -1,0 +1,33 @@
+<div class="container">
+    <h1>Créer un compte sur Le Bon Coup</h1>
+    <div class="mb-3">
+        <label for="Email" class="form-label">Adresse mail</label>
+        <input type="email" class="form-control" id="Email">
+    </div>
+
+    <div class="mb-3">
+        <label for="Nom" class="form-label">Nom</label>
+        <input type="Nom" class="form-control" id="Nom">
+    </div>
+
+    <div class="mb-3">
+        <label for="Prenom" class="form-label">Prenom</label>
+        <input type="Prenom" class="form-control" id="Prenom">
+    </div>
+
+    <div class="mb-3">
+        <label for="Mdp" class="form-label">Mot de passe</label>
+        <input type="password" class="form-control" id="Mdp">
+    </div>
+
+    <div class="mb-3">
+        <label for="MdpComfirm" class="form-label">Confirmer le mot de passe</label>
+        <input type="password" class="form-control" id="MdpComfirm">
+    </div>
+    <button type="submit" class="btn btn-primary" onclick="indexController.verifFormulaire()">Valider</button>
+</div>
+<div class="container">
+    <div id="messageDanger" class="alert alert-danger" type="danger" style="display: none;">
+        Attention ! Il faut remplir tous les champs
+    </div>
+</div>
