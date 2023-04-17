@@ -10,8 +10,8 @@ const ville = require('./ville.js');
 
 exports.getUsers = async () => await utilisateur.findAll();
 
-exports.getUserByFirstName = async (firstName) => {
-    return await utilisateur.findOne({ where: { firstName } });
+exports.getUserForConnection  = async (adresseEmail, Mdp) => {
+    return await utilisateur.findOne({ where: { adresseEmail, Mdp } });
 };
 
 exports.createUser = async (body) => {

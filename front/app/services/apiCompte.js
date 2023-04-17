@@ -31,5 +31,18 @@ export default class apiCompte
             headers: {"Content-type": "application/json; charset=UTF-8"}
         })
     }
+
+    recupererUtilisateur(email, mdp)
+    {
+        console.log(`fetch`)
+        return this.myFetch('users', {
+            method: "POST",
+            body: JSON.stringify({
+                email: email,
+                mdp: mdp
+            }),
+            headers: {"Content-type": "application/json; charset=UTF-8"}
+        })
+    }
 }
 

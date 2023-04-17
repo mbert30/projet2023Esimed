@@ -13,4 +13,13 @@ export default class apiCompteModel
             return undefined
         }
     }
+    async recupererUtilisateur(email, mdp)
+    {
+        console.log("passage model")
+        try {
+            await this.api.recupererUtilisateur(email, mdp)
+        } catch {
+            return undefined
+        }
+    }
 }

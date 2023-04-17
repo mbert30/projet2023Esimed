@@ -1,6 +1,6 @@
 import BaseController from './basecontroller.js'
 import apiCompteModel from '../model/apiCompteModel.js'
-class IndexController extends BaseController
+class ConnexionCompteController extends BaseController
 {
     constructor() {
         super()
@@ -10,16 +10,13 @@ class IndexController extends BaseController
     {
         const danger = document.getElementById("messageDanger")
         let email = document.getElementById("Email").value
-        let nom = document.getElementById("Nom").value
-        let prenom = document.getElementById("Prenom").value
         let mdp = document.getElementById("Mdp").value
-        let confirmMdp = document.getElementById("MdpComfirm").value
 
-        if(email !== "" && nom !== "" && prenom !== "" && mdp !== "" && confirmMdp !== "")
+        if(email !== "" && mdp !== "")
         {
             danger.style="display: none;"
             console.log("test valide")
-            this.model.creerUtilisateur(email, nom, prenom, mdp)
+            this.model.recupererUtilisateur(email, mdp)
         }else
         {
             danger.style= ""
@@ -27,4 +24,4 @@ class IndexController extends BaseController
     }
 }
 
-export default () => window.indexController = new IndexController()
+export default () => window.connexionCompteController = new ConnexionCompteController()

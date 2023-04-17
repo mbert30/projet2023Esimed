@@ -9,6 +9,10 @@ router.get('/', async (req, res) => {
     res.send(await userRepository.getUsers())
 });
 
+router.get('/getUserForConnection', async (req, res) => {
+    res.send(await userRepository.getUserForConnection(req.body))
+});
+
 router.post('/', async (req, res) => {
     await userRepository.createUser(req.body)
     res.status(201).end()
