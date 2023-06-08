@@ -2,6 +2,8 @@ const express = require('express');
 const { initializeConfigMiddlewares, initializeErrorMiddlwares } = require('./middlewares');
 const userRoutes = require('../controllers/user.routes');
 const authRoutes = require('../controllers/auth.routes');
+const annonceRoutes = require('../controllers/annonce.routes');
+const commentaireRoutes = require('../controllers/commentaire.routes');
 const { sequelize } = require('../models/sqlite.db');
 
 class WebServer {
@@ -17,7 +19,7 @@ class WebServer {
     this._initializeRoutes();
     initializeErrorMiddlwares(this.app);
   }
-
+  
   start() {
     this.server = this.app.listen(this.port, () => {
       console.log(`Example app listening on port ${this.port}`);
@@ -31,6 +33,8 @@ class WebServer {
   _initializeRoutes() {
     this.app.use('/users', userRoutes.initializeRoutes());
     this.app.use('/auth', authRoutes.initializeRoutes());
+    this.app.use('/annonce', annonceRoutes.initializeRoutes());
+    this.app.use('/commentaire', commentaireRoutes.initializeRoutes());
   }
 }
 

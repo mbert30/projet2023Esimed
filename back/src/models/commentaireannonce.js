@@ -1,8 +1,11 @@
 const {Sequelize, DataTypes} = require('sequelize');
+const annonce = require('./annonce.js');
+const utilisateur = require('./utilisateur.js');
 const {sequelize} = require('./sqlite.db');
-const comentaireannonce = sequelize.define('comentaireannonce',
+
+const commentaireannonce = sequelize.define('commentaireannonce',
     {
-    ID_ComentaireAnnonce: {
+    ID_CommentaireAnnonce: {
       autoIncrement: true,
       type: DataTypes.BIGINT.UNSIGNED,
       allowNull: false,
@@ -16,8 +19,8 @@ const comentaireannonce = sequelize.define('comentaireannonce',
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    horodatage: {
-      type: DataTypes.DATE,
+    createdAt: {
+      type: Sequelize.DATE,
       allowNull: false
     },
     TexteCommentaire: {
@@ -26,26 +29,26 @@ const comentaireannonce = sequelize.define('comentaireannonce',
     }
   }, {
     sequelize,
-    tableName: 'comentaireannonce',
-    timestamps: false,
+    tableName: 'commentaireannonce',
+    timestamps: true,
     indexes: [
       {
-        name: "pk_ID_ComentaireAnnonce",
+        name: "pk_ID_CommentaireAnnonce",
         unique: true,
         using: "BTREE",
         fields: [
-          { name: "ID_ComentaireAnnonce" },
+          { name: "ID_CommentaireAnnonce" },
         ]
       },
       {
-        name: "fk_ID_Utilisateur_comentaireannonce",
+        name: "fk_ID_Utilisateur_commentaireAnnonce",
         using: "BTREE",
         fields: [
           { name: "ID_Utilisateur" },
         ]
       },
       {
-        name: "fk_ID_Annonce_comentaireannonce",
+        name: "fk_ID_Annonce_commentaireAnnonce",
         using: "BTREE",
         fields: [
           { name: "ID_Annonce" },
@@ -53,4 +56,13 @@ const comentaireannonce = sequelize.define('comentaireannonce',
       },
     ]
 });
-module.exports = comentaireannonce
+
+commentaireannonce.belongsTo(utilisateur, {
+  foreignKey: 'ID_Utilisateur'
+});
+
+commentaireannonce.belongsTo(annonce, {
+  foreignKey: 'ID_Annonce'
+});
+
+module.exports = commentaireannonce

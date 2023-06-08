@@ -1,10 +1,10 @@
 import BaseController from './basecontroller.js'
-import apiCompteModel from '../model/apiCompteModel.js'
+import ApiModel from '../model/apiModel.js'
 class ConnexionCompteController extends BaseController
 {
     constructor() {
         super()
-        this.model = new apiCompteModel()
+        this.model = new ApiModel()
     }
     verifFormulaire()
     {
@@ -12,16 +12,14 @@ class ConnexionCompteController extends BaseController
         let email = document.getElementById("Email").value
         let mdp = document.getElementById("Mdp").value
 
-        if(email !== "" && mdp !== "")
-        {
+        if(email !== "" && mdp !== "") {
             danger.style="display: none;"
             console.log("test valide")
-            this.model.recupererUtilisateur(email, mdp)
-        }else
-        {
+            this.model.connexionUtilisateur(email, mdp)
+        }else {
             danger.style= ""
         }
     }
 }
 
-export default () => window.connexionCompteController = new ConnexionCompteController()
+export default ConnexionCompteController

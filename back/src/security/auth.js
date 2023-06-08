@@ -1,9 +1,6 @@
-const bcrypt = require('bcryptjs');
+const { sign } = require('jsonwebtoken');
 
-exports.generateHashedPassword = (password) => {
-  return bcrypt.hashSync(password, bcrypt.genSaltSync(12));
-};
-
-exports.passwordsAreEqual = (rawPassword, hashedPassword) => {
-  return bcrypt.compareSync(rawPassword, hashedPassword);
+exports.generateAuthToken = (userId, email) => {
+  
+  return sign({id : userId, email : email}, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_ON });
 };

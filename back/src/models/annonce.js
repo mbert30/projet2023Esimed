@@ -1,5 +1,7 @@
 const {Sequelize, DataTypes} = require('sequelize');
 const {sequelize} = require('./sqlite.db');
+var _categorie = require("./categorie");
+var _utilisateur = require("./utilisateur");
 const annonce = sequelize.define('annonce',
     {
     ID_Annonce: {
@@ -63,5 +65,13 @@ const annonce = sequelize.define('annonce',
       },
     ]
 })
+annonce.belongsTo(_utilisateur, {
+  foreignKey: 'ID_Utilisateur'
+});
+
+annonce.belongsTo(_categorie, {
+  foreignKey: 'ID_Categorie'
+});
+
 module.exports = annonce
 

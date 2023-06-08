@@ -11,11 +11,16 @@
         <script src="http://www.w3schools.com/lib/w3data.js"></script>
     </head>
     <body>
-        <div w3-include-html="navbar.html">
-            <script>
-                w3IncludeHTML();
-            </script>
+        <div id="navbar">
+
         </div>
+        <script type="module">
+            import AccueilController from '../app/controllers/navbar.js'
+            window.accueilController = new AccueilController()
+            accueilController.changementNavbar()
+            import CreationCompteController from '../app/controllers/CreationCompte.js';
+            window.creationCompteController = new CreationCompteController()
+        </script>
         <div class="container">
             <h1>Créer un compte sur Le Bon Coup</h1>
             <div class="mb-3">
@@ -46,9 +51,9 @@
         </div>
         <div class="container">
             <div id="messageDanger" class="alert alert-danger" type="danger" style="display: none;">
-                Attention ! Il faut remplir tous les champs
+                
             </div>
         </div>
-        <script type="application/ecmascript" src="app/tools.js"></script>
+        <script type="application/ecmascript" src="../app/tools.js"></script>
     </body>
 </html>
