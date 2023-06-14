@@ -29,7 +29,7 @@ exports.recupererInfoAnnonce = async (body) => {
     })
 }
 
-exports.rechecheAnnonceAvecCategorie = async (body) => {
+exports.rechercheAnnonceAvecCategorie = async (body) => {
     return await annonce.findAll({ 
         include: [categorie, utilisateur],
         where : {
@@ -42,7 +42,7 @@ exports.rechecheAnnonceAvecCategorie = async (body) => {
     })
 }
 
-exports.rechecheAnnonceSansCategorie = async (body) => {
+exports.rechercheAnnonceSansCategorie = async (body) => {
     return await annonce.findAll({ 
         include: [categorie, utilisateur],
         where : {

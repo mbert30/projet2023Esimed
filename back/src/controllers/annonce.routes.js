@@ -12,15 +12,16 @@ router.post('/nouvelleAnnonce', async (req, res) => {
     res.send(await annonceRepository.nouvelleAnnonce(req.body))
 })
 
-router.post('/rechecheAnnonce', async (req, res) => {
+router.post('/rechercheAnnonce', async (req, res) => {
+    console.log(req.body)
     let annonces
     if(req.body.categorie === 0)
     {
-        annonces = await annonceRepository.rechecheAnnonceSansCategorie(req.body)
+        annonces = await annonceRepository.rechercheAnnonceSansCategorie(req.body)
     }
     else
     {
-        annonces = await annonceRepository.rechecheAnnonceAvecCategorie(req.body)
+        annonces = await annonceRepository.rechercheAnnonceAvecCategorie(req.body)
     }
     res.send(annonces)
 })

@@ -8,13 +8,13 @@ const { validateBody } = require('./validation/route.validator');
 
 router.post('/recupererCommentaire', async (req, res) => { 
     let retour = await commentaireRepository.recupererCommentaire(req.body)
-    console.log(retour[0].createdAt);
+    console.log(retour);
 
     res.send(retour)
 })
 
 router.post('/creationCommentaire', async (req, res) => { 
-    const myDateTime = DateTime.fromMillis(Date.parse());
+    const myDateTime = DateTime.fromMillis(Date.parse(Date.now));
     const formattedDateTime = myDateTime.toFormat('dd/MM/yyyy HH:mm:ss.SSS');
     res.send(await commentaireRepository.creationCommentaire(req.body, formattedDateTime))
 })

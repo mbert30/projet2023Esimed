@@ -7,8 +7,7 @@ const { body } = require('express-validator');
 const { validateBody } = require('./validation/route.validator');
 
 router.post('/login', body('email').notEmpty(), body('mdp').notEmpty(), async (req, res) => {
-  
-  console.log(req.body)
+
   try {
     validateBody(req);
   } catch (e) {

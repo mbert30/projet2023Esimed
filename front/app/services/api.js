@@ -81,7 +81,7 @@ export default class Api
     }
     chargementAnnonce(categorie, recherche, token) 
     {
-        return this.myFetch('annonce/rechecheAnnonce', {
+        return this.myFetch('annonce/rechercheAnnonce', {
             method: "POST",
             body: JSON.stringify({
                 "categorie": categorie,
